@@ -4,6 +4,20 @@ const debug = require("debug")("DiscordBotManager");
 
 class CommonWorkItems
 {
+
+  static ValidateIsNotNull(obj, parameterName = null)
+  {
+    var log = debug.extend(CommonWorkItems.ValidateIsNotNull.name);
+    var errorMessage;
+
+    if (obj === null || obj === undefined)
+    {
+      errorMessage = `The value of ${ parameterName } is null or undefined`;
+      log(errorMessage);
+      throw new ReferenceError(errorMessage);
+    }
+  }
+
   static IsNullOrWhiteSpace(str)
   {
     var log = debug.extend(CommonWorkItems.IsNullOrWhiteSpace.name);
