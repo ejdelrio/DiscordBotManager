@@ -1,7 +1,11 @@
 "use strict";
 
+// npm dependancies
 const debug = require("debug")("DiscordBotClient : TenantInstanceTableEntity.js");
+
+// Custom build dependancies
 const BotManagerTableEntity = require("./BotManagerTableEntity");
+const { ValidateIsNotNull, ValidateType } = require("../../CommonWorkItems/CommonWorkItems");
 
 // Private variable values;
 var tenantName;
@@ -31,19 +35,8 @@ class TenantInstanceTableEntity extends BotManagerTableEntity
     var log = debug.extend(`set TenantName(${ name })`);
     var errorMessage;
 
-    if (name === null || name === undefined)
-    {
-      errorMessage = "name is either null or undefined";
-      log(errorMessage);
-      throw new ReferenceError()
-    }
-
-    if (!name instanceof String && !typeof name !== "string")
-    {
-      errorMessage = "name must be an instance of a string";
-      log(errorMessage)
-      throw new TypeError(errorMessage);
-    }
+    ValidateIsNotNull(name, "name");
+    ValidateType(name, String);
 
     if (name.length <= 0 || name.length > 30)
     {

@@ -18,6 +18,50 @@ class CommonWorkItems
     }
   }
 
+  static ValidateType(obj, expectedType)
+  {
+    var log = debug(CommonWorkItems.ValidateType.name);
+    var errorMessage;
+
+    if (obj === null)
+    {
+      return;
+    }
+
+    CommonWorkItems.ValidateIsNotNull(expectedType);
+
+    if (expectedType === String)
+    {
+      if (!obj instanceof expectedType && typeof obj !== "string")
+      {
+        errorMessage = "Expected object instance to be a string.";
+        log(errorMessage);
+        throw new TypeError(errorMessage);
+      }
+
+      return;
+    }
+
+    if (expectedType === Array)
+    {
+      if (!obj instanceof Array && !Array.isArray(obj))
+      {
+        errorMessage = "Expected object to be instance of an array.";
+        log(errorMessage);
+        throw new TypeError(errorMessage);
+      }
+
+      return;
+    }
+
+    if (!obj instanceof expectedType)
+    {
+      errorMessage = `Expected object to be instance of ${ expectedType.prototype.name }`;
+      log(errorMessage);
+      throw new TypeError(errorMessage);
+    }
+  }
+
   static IsNullOrWhiteSpace(str)
   {
     var log = debug.extend(CommonWorkItems.IsNullOrWhiteSpace.name);
