@@ -4,14 +4,14 @@
 const debug = require("debug")("DiscordBotClient : TenantInstanceTableEntity.js");
 
 // Custom build dependancies
-const BotManagerTableEntity = require("./BotManagerTableEntity");
+const BotManagerTableEntity = require("./BotManagerTableEntityBase");
 const { ValidateIsNotNull, ValidateType } = require("../../CommonWorkItems/CommonWorkItems");
 
 // Private variable values;
 var tenantName;
 var tenantId;
 
-class TenantInstanceTableEntity extends BotManagerTableEntity
+class TenantTableEntity extends BotManagerTableEntity
 {
   constructor (id)
   {
@@ -49,4 +49,4 @@ class TenantInstanceTableEntity extends BotManagerTableEntity
   }
 }
 
-module.exports = TenantInstanceTableEntity;
+module.exports = TenantTableEntity;

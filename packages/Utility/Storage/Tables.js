@@ -1,6 +1,8 @@
 "use strict";
 
-class Tables
+const { Model } = require("objection");
+
+class Tables extends Model
 {
 
 }

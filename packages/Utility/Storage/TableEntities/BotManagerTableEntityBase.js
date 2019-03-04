@@ -3,7 +3,7 @@
 const debug = require("debug")("DiscordBotClient : BotManagerEntity.js");
 const TableEntity = require("./TableEntity");
 
-class BotManagerTableEntity extends TableEntity
+class BotManagerTableEntityBase extends TableEntity
 {
   constructor (id)
   {
@@ -11,4 +11,4 @@ class BotManagerTableEntity extends TableEntity
   }
 }
 
-module.exports = BotManagerTableEntity;
+module.exports = BotManagerTableEntityBase;
