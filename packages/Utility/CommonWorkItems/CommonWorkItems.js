@@ -84,34 +84,27 @@ class CommonWorkItems
   }
   static IsNullOrEmpty(str)
   {
-    var log = debug.extend(CommonWorkItems.IsNullOrEmpty.name);
-    log("Begining");
+    CommonWorkItems.ValidateType(str, String);
 
     if (str === null || str.length === 0)
     {
-      log("Exiting");
       return true;
     }
 
-    log("Exiting");
     return false;
   }
 
   static RemovePadding(str)
   {
-    var log;
     var formattedString;
     var startOfString;
     var endOfString;
 
     if (CommonWorkItems.IsNullOrEmpty(str))
     {
-      return "";
+      return str;
     }
 
-    log = debug.extend(CommonWorkItems.RemovePadding.name);
-    log("Beginning");
-    log.arguments(str);
     formattedString = new String();
 
     for (startOfString = 0; i < str.length; startOfString++)
@@ -136,7 +129,6 @@ class CommonWorkItems
       startOfString++;
     }
 
-    log("Ending");
     return formattedString;
   }
 }
